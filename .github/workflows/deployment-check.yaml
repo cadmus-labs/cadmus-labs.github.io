@@ -1,0 +1,78 @@
+name: Deployment Check
+
+on:
+    workflow_run:
+        workflows:
+            - pages-build-deployment
+        types:
+            - completed
+    workflow_dispatch:
+    deployment:
+    schedule:
+        - cron: 0 0 * * *
+
+jobs:
+    links-check:
+        name: Check Links in Website
+        runs-on: ubuntu-20.04
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+            - name: Link Checker
+              id: lychee
+              uses: lycheeverse/lychee-action@v1.5.4
+              with:
+                  args: --verbose --no-progress https://cadmus-labs.github.io/
+                  fail: true
+            - name: Upload Link Checker Report
+              if: always()
+              uses: actions/upload-artifact@v3
+              with:
+                  name: Link Checker Report
+                  path: ./lychee/out.md
+
+    # website-audit:
+    #     name: Run Website Audit
+    #     runs-on: ubuntu-20.04
+    #     steps:
+    #         - name: Checkout
+    #           uses: actions/checkout@v3
+    #         - name: Setup Node.js
+    #           uses: actions/setup-node@v3
+    #           with:
+    #               node-version: "18.12.1"
+    #         - name: Run Lighthouse Audit
+    #           run: |
+    #               npm install -g @lhci/cli@0.10.x
+    #               lhci autorun
+    #           env:
+    #               LHCI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #               VALIDATING_LIVE_SITE: "true"
+    #         - name: Upload artifacts
+    #           if: always()
+    #           uses: actions/upload-artifact@v3
+    #           with:
+    #               name: website-audit
+    #               path: ./lhci-out
+
+    run-vulnerability-analysis:
+        name: Run Vulnerability Analysis
+        runs-on: ubuntu-20.04
+        permissions:
+            security-events: write
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+            - name: Run Trivy vulnerability scanner
+              uses: aquasecurity/trivy-action@master
+              with:
+                  scan-type: fs
+                  vuln-type: library
+                  exit-code: 1
+                  format: sarif
+                  output: trivy-results.sarif
+            - name: Upload Trivy scan results to GitHub Security tab
+              uses: github/codeql-action/upload-sarif@v2
+              if: always()
+              with:
+                  sarif_file: trivy-results.sarif
