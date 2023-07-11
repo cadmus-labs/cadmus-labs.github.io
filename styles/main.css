@@ -1,0 +1,38 @@
+/*
+ * Cadmus Labs - All Rights Reserved
+ *
+ * This source code and its associated files are the
+ * confidential and proprietary information of Cadmus Labs.
+ * Unauthorized reproduction, distribution, or disclosure
+ * in any form, in whole or in part, is strictly prohibited
+ * except as explicitly provided under a separate license
+ * agreement with Cadmus Labs.
+ *
+ * Website: https://cadmus-labs.github.io
+ *
+ * © 2023 Cadmus Labs. All rights reserved.
+ */
+body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #ddd;
+}
+
+a {
+    color: #616161;
+    text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: darkgrey;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #555;
+    box-shadow: inset 0 0 6px rgba(0 0 0 / 30%);
+}

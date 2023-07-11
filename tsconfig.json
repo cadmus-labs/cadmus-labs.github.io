@@ -4,6 +4,11 @@
         "noImplicitThis": true,
         "strictNullChecks": true,
         "baseUrl": ".",
+        "paths": {
+            "@/components/*": ["components/*"],
+            "@/constants/*": ["constants/*"],
+            "@/styles/*": ["styles/*"]
+        },
         "target": "es5",
         "lib": ["dom", "dom.iterable", "esnext"],
         "allowJs": true,
@@ -24,10 +29,7 @@
             {
                 "name": "next"
             }
-        ],
-        "paths": {
-            "@/*": ["./src/*"]
-        }
+        ]
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
     "exclude": ["node_modules"]

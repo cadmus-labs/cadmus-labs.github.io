@@ -14,7 +14,12 @@
         "sourceType": "module"
     },
     "plugins": ["react", "@typescript-eslint"],
-    "ignorePatterns": ["node_modules/**", "**/*.js", "**/*.d.ts"],
+    "ignorePatterns": [
+        "node_modules/**",
+        "coverage/**",
+        "**/*.js",
+        "**/*.d.ts"
+    ],
     "rules": {
         "import/order": [
             "error",
