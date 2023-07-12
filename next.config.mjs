@@ -33,7 +33,7 @@ export default withBundleAnalyzer(
             ignoreDuringBuilds: process.env["BUILD_TYPE"] == "test",
         },
         images: {
-            unoptimized: true
+            unoptimized: true,
         },
         productionBrowserSourceMaps: true,
     }),

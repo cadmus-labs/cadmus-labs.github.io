@@ -136,17 +136,41 @@ class WebsiteDocument extends Document<WebsiteDocumentProps> {
 
                     <meta name="application-name" content={FULL_NAME} />
                     <meta name="description" content={DESCRIPTION} />
-                    <meta name="theme-color" content="#000000" />
+                    <meta name="theme-color" content="#6C63FF" />
+                    <meta name="msapplication-TileColor" content="#6C63FF" />
+
                     <link rel="manifest" href={`${PUBLIC_URL}/manifest.json`} />
                     <link
                         rel="shortcut icon"
-                        href={`${PUBLIC_URL}/favicon.png`}
+                        href={`${PUBLIC_URL}/favicon.ico`}
+                    />
+                    <link
+                        rel="icon"
+                        type="image/png"
+                        sizes="16x16"
+                        href={`${PUBLIC_URL}/favicon-16x16.png`}
+                    />
+                    <link
+                        rel="icon"
+                        type="image/png"
+                        sizes="32x32"
+                        href={`${PUBLIC_URL}/favicon-32x32.png`}
+                    />
+                    <link
+                        rel="apple-touch-icon"
+                        sizes="180x180"
+                        href={`${PUBLIC_URL}/apple-touch-icon.png`}
+                    />
+                    <link
+                        rel="mask-icon"
+                        href={`${PUBLIC_URL}/safari-pinned-tab.svg`}
+                        color="#6C63FF"
                     />
                     <link rel="canonical" href={PUBLIC_URL + currentPath} />
 
                     <link
                         rel="apple-touch-icon"
-                        href={`${PUBLIC_URL}/assets/logo.jpg`}
+                        href={`${PUBLIC_URL}/assets/logo.png`}
                     />
 
                     <meta property="og:title" content={FULL_NAME} />
@@ -157,7 +181,7 @@ class WebsiteDocument extends Document<WebsiteDocumentProps> {
                     <meta property="og:url" content={PUBLIC_URL} />
                     <meta
                         property="og:image"
-                        content={`${PUBLIC_URL}/assets/logo.jpg`}
+                        content={`${PUBLIC_URL}/assets/logo.png`}
                     />
                     <meta property="og:image:height" content="1960" />
                     <meta property="og:image:width" content="1960" />
@@ -180,7 +204,7 @@ class WebsiteDocument extends Document<WebsiteDocumentProps> {
                                 "image": {
                                     "height": "1960",
                                     "width": "1960",
-                                    "url": `${PUBLIC_URL}/assets/logo.jpg`,
+                                    "url": `${PUBLIC_URL}/assets/logo.png`,
                                     "@type": "imageObject",
                                 },
                                 "url": PUBLIC_URL,
