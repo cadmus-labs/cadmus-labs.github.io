@@ -25,6 +25,7 @@ import {
 import type { AppProps, NextWebVitalsMetric } from "next/app";
 import { Roboto } from "next/font/google";
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
@@ -99,17 +100,21 @@ function WebsiteApp({
                                     enableColorOnDark={true}
                                     elevation={0}
                                 >
-                                    <Toolbar>
-                                        <Typography
-                                            variant="h6"
-                                            component="div"
-                                            sx={{ flexGrow: 1 }}
-                                        >
-                                            Cadmus Labs
-                                        </Typography>
+                                    <Toolbar disableGutters>
+                                        <Link href="/" passHref>
+                                            <Typography
+                                                variant="h5"
+                                                component="div"
+                                                sx={{ flexGrow: 1 }}
+                                            >
+                                                Cadmus Labs
+                                            </Typography>
+                                        </Link>
                                     </Toolbar>
                                 </AppBar>
-                                <Component {...pageProps} />
+                                <Box sx={{ pt: 2 }}>
+                                    <Component {...pageProps} />
+                                </Box>
                             </Container>
                         )}
                     </WebsiteThemeProvider>

@@ -21,6 +21,7 @@ import {
     Typography,
 } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 
 const Home = (): React.ReactElement => {
     return (
@@ -83,13 +84,9 @@ const Home = (): React.ReactElement => {
                             left: "1em",
                         }}
                     >
-                        <Button
-                            variant="contained"
-                            href="https://rapidapi.com/cadmus-labs-cadmus-labs-admin/api/website-oracle"
-                            target="_blank"
-                        >
-                            View Solutions
-                        </Button>
+                        <Link href="/solutions" passHref>
+                            <Button variant="contained">View Solutions</Button>
+                        </Link>
                     </Box>
                 </Grid>
             </Grid>
