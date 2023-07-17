@@ -32,7 +32,7 @@ const Home = (): React.ReactElement => {
             alignItems="stretch"
             sx={{
                 height: (theme: Theme) =>
-                    `calc(100vh - ${theme.mixins.toolbar.minHeight ?? 0}px)`,
+                    `calc(70vh - ${theme.mixins.toolbar.minHeight ?? 0}px)`,
             }}
         >
             <Grid

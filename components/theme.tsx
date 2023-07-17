@@ -12,6 +12,7 @@
  *
  * © 2023 Cadmus Labs. All rights reserved.
  */
+
 import {
     createTheme,
     CssBaseline,

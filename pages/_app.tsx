@@ -29,6 +29,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
+import RouterBreadcrumbs from "@/components/RouterBreadcrumbs";
 import WebsiteThemeProvider from "@/components/theme";
 import "@/styles/main.css";
 
@@ -112,9 +113,8 @@ function WebsiteApp({
                                         </Link>
                                     </Toolbar>
                                 </AppBar>
-                                <Box sx={{ pt: 2 }}>
-                                    <Component {...pageProps} />
-                                </Box>
+                                <RouterBreadcrumbs />
+                                <Component {...pageProps} />
                             </Container>
                         )}
                     </WebsiteThemeProvider>
