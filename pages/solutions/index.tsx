@@ -14,7 +14,6 @@
  */
 
 import {
-    Box,
     Card,
     CardActionArea,
     CardContent,
@@ -29,7 +28,7 @@ interface Solution {
     name: string;
     description: string;
     logoUrl: string;
-    websiteUrl: string;
+    url: string;
 }
 
 const Solutions = (): React.ReactElement => {
@@ -39,13 +38,12 @@ const Solutions = (): React.ReactElement => {
             description:
                 "Versatile Website Analysis API capable of comprehensively analyzing and handling various aspects related to websites.",
             logoUrl: "/assets/website-oracle-logo.jpg",
-            websiteUrl:
-                "https://rapidapi.com/cadmus-labs-cadmus-labs-admin/api/website-oracle",
+            url: "website-oracle",
         },
     ];
     return (
-        <Box>
-            <Typography variant="h6" component="h1">
+        <React.Fragment>
+            <Typography variant="h5" component="h1">
                 Solutions
             </Typography>
             <Grid
@@ -58,7 +56,7 @@ const Solutions = (): React.ReactElement => {
                 {solutions.map((solution) => (
                     <Grid key={solution.name} item xs={12} md={3}>
                         <Card sx={{ maxWidth: 345 }}>
-                            <Link href={solution.websiteUrl} target="_blank">
+                            <Link href={`/solutions/${solution.url}`}>
                                 <CardActionArea>
                                     <CardMedia
                                         component="img"
@@ -68,7 +66,7 @@ const Solutions = (): React.ReactElement => {
                                     <CardContent>
                                         <Typography
                                             gutterBottom
-                                            variant="h5"
+                                            variant="h6"
                                             component="div"
                                         >
                                             {solution.name}
@@ -86,7 +84,7 @@ const Solutions = (): React.ReactElement => {
                     </Grid>
                 ))}
             </Grid>
-        </Box>
+        </React.Fragment>
     );
 };
 
