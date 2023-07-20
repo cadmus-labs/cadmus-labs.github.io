@@ -115,6 +115,7 @@ function WebsiteApp({
                                 </AppBar>
                                 <RouterBreadcrumbs />
                                 <Component {...pageProps} />
+                                <Container sx={{ height: 10 }} />
                             </Container>
                         )}
                     </WebsiteThemeProvider>

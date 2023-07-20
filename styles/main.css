@@ -24,6 +24,10 @@ a {
     text-decoration: none;
 }
 
+.num-prefixed-list ol > li::marker {
+    content: counters(list-item, ".") ". ";
+}
+
 ::-webkit-scrollbar {
     width: 5px;
 }
