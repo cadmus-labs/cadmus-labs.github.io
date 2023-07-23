@@ -23,7 +23,7 @@ import {
     Typography,
 } from "@mui/material";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Logo from "@/components/content/Logo";
 import Paragraph from "@/components/content/Paragraph";
@@ -37,31 +37,47 @@ const Overview = (): React.ReactElement => (
     <Section>
         <Photo float={"right"} photo={Photos.AnalyzePhoto} />
         <Paragraph>
-            Introducing the Website Oracle API - a powerful tool for analyzing
-            and comprehensively assessing various aspects of websites. With its
-            rich set of features, this API empowers thorough analysis of website
-            components, including SSL certificates, dependencies, broken links,
-            and more. As we continue to enhance and expand its capabilities, the
-            Website Oracle API will serve as an invaluable resource for in-depth
-            website analysis, providing valuable insights and comprehensive
-            evaluations.
+            Welcome to Website Oracle, a cutting-edge API developed by Cadmus
+            Labs. Website Oracle offers a comprehensive set of utility endpoints
+            designed to empower you with in-depth analysis and insights into
+            various aspects of websites deployed on the internet.
         </Paragraph>
-        <SectionHeading>Features</SectionHeading>
+        <Paragraph>
+            With Website Oracle, you gain access to a wide array of features
+            that enable you to delve deep into websites and gain a thorough
+            understanding of their structure and dependencies. Our API is your
+            trusted ally in gaining valuable insights into website elements for
+            various use cases.
+        </Paragraph>
+        <Paragraph>
+            Please ensure that you adhere to our Terms of Use while using the
+            Website Oracle API. By using our API, you acknowledge your
+            responsibility to conduct lawful analyses and assessments in
+            compliance with the laws governing the websites you evaluate. Cadmus
+            Labs does not assume any liability for the usage of the API beyond
+            the scope of the agreed Terms.
+        </Paragraph>
+        <SectionHeading>Key Features</SectionHeading>
         <ul>
             <li>
-                Fetch Certificates: Utilize this endpoint to retrieve
-                certificate-related information for a particular website. This
-                functionality allows you to decode a certificate and
-                conveniently access its associated details.
+                Analyze Dependencies and Broken Links: Discover the hidden
+                intricacies of your website&apos;s dependency graph and easily
+                identify broken links that may be hampering user experience. Our
+                endpoint for analyzing dependencies provides valuable insights
+                into how your website&apos;s various components interact.
             </li>
             <li>
-                Dependency Analysis: Utilize this endpoint to conduct an
-                analysis of broken links and dependencies within a website. It
-                enables you to obtain a comprehensive graph of all the
-                dependencies associated with your website. By initiating the
-                crawling process from a specified URL, this endpoint retrieves
-                and provides information on all visited URLs, including their
-                respective status and contained dependencies.
+                Retrieve SSL Certificates with Ease: Obtain essential SSL
+                certificate-related information for any website of your choice
+                through our intuitive API endpoint. Decipher certificates
+                effortlessly and access crucial details to enhance your
+                website&apos;s security and credibility.
+            </li>
+            <li>
+                Get Website Content in Plain Text: Access the content of any
+                website in plain text format through our new API endpoint.
+                Simplify data extraction and analysis by retrieving the textual
+                content of web pages for further processing and insights.
             </li>
         </ul>
         <SectionHeading>Support</SectionHeading>
@@ -93,7 +109,6 @@ const TermsOfUse = (): React.ReactElement => {
     return (
         <React.Fragment>
             <Section>
-                <SectionHeading>Website Oracle - Terms of Use</SectionHeading>
                 <Paragraph>
                     These Terms of Use (&quot;Terms&quot;) govern the use of the
                     &quot;Website Oracle&quot; API (&quot;the API&quot;)
@@ -315,13 +330,18 @@ const WebsiteOracle = (): React.ReactElement => {
         );
     };
 
+    const [isLoading, setLoading] = useState<boolean>(true);
+    useEffect(() => {
+        setLoading(router.isReady);
+    }, [router.isReady]);
+
     const index = pageTabs.findIndex((t) => t.id === router.query.tab);
     const selectedIndex = index === -1 ? 0 : index;
     const TabContent = pageTabs[selectedIndex].component;
     return (
         <React.Fragment>
             <Typography variant="h5" component="h1">
-                Website Oracle
+                Website Oracle: Your Ultimate Website Analysis Solution
             </Typography>
             <Logo height={"4em"} logo={Logos.websiteOracle} />
             <Button
@@ -333,7 +353,7 @@ const WebsiteOracle = (): React.ReactElement => {
             >
                 View on Rapid API
             </Button>
-            {router.isReady ? (
+            {isLoading ? (
                 <React.Fragment>
                     <Tabs
                         value={selectedIndex}
