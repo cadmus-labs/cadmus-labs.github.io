@@ -1,0 +1,33 @@
+name: Website Oracle Checks
+
+on:
+    workflow_dispatch:
+    schedule:
+        - cron: 0 0 * * SUN
+
+jobs:
+    check-ssl-certificate:
+        runs-on: ubuntu-latest
+        name: Check Certificate
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+            - name: Check Website Certificate
+              uses: cadmus-labs/check-website-certificate-action@main
+              with:
+                  apiKey: ${{ secrets.WEBSITE_ORACLE_API_KEY }}
+                  host: "cadmus-labs.github.io"
+
+    check-dependencies:
+        runs-on: ubuntu-latest
+        name: Check Dependencies
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+            - name: Check Dependencies
+              uses: cadmus-labs/check-website-dependencies-action@main
+              with:
+                  apiKey: ${{ secrets.WEBSITE_ORACLE_API_KEY }}
+                  url: "https://cadmus-labs.github.io/"
+                  maxDepth: 1
+                  includeTypes: page,script,stylesheet
