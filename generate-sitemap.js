@@ -22,7 +22,7 @@ const sitemapFileName = "sitemap.xml";
 const robotsFileName = "robots.txt";
 const buildDir = "./out";
 
-const urls = ["/"].map((url) => ({
+const urls = ["/", "/solutions", "/solutions/website-oracle"].map((url) => ({
     url: url,
     changefreq: "daily",
     lastmod: currentTimestamp,
