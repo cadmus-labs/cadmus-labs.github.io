@@ -1,3 +1,4 @@
+"use client";
 /*
  * Cadmus Labs - All Rights Reserved
  *
@@ -12,7 +13,6 @@
  *
  * © 2023 Cadmus Labs. All rights reserved.
  */
-
 import {
     createTheme,
     CssBaseline,
@@ -21,8 +21,10 @@ import {
     ThemeProvider,
     useMediaQuery,
 } from "@mui/material";
-import { deepPurple, grey } from "@mui/material/colors";
+import { grey, deepPurple } from "@mui/material/colors";
 import React, { useMemo, useEffect, useState, useContext } from "react";
+
+import EmotionCacheProvider from "./EmotionCacheProvider";
 
 export type ColorScheme = "dark" | "light";
 const colorSchemes = ["dark", "light"];
@@ -113,28 +115,32 @@ const WebsiteThemeProvider = ({
 
     const theme = useMemo(() => createWebsiteTheme(colorScheme), [colorScheme]);
     return (
-        <StyledEngineProvider injectFirst>
-            <ThemeProvider theme={theme}>
-                <CssBaseline />
-                <WebsiteTheme.Provider
-                    value={{
-                        theme,
-                        colorScheme,
-                        setColorScheme: (newColorScheme: ColorScheme): void => {
-                            try {
-                                localStorage.setItem(
-                                    COLOR_SCHEME_KEY,
-                                    newColorScheme,
-                                );
-                            } catch {}
-                            setColorScheme(newColorScheme);
-                        },
-                    }}
-                >
-                    {children}
-                </WebsiteTheme.Provider>
-            </ThemeProvider>
-        </StyledEngineProvider>
+        <EmotionCacheProvider>
+            <StyledEngineProvider injectFirst>
+                <ThemeProvider theme={theme}>
+                    <CssBaseline />
+                    <WebsiteTheme.Provider
+                        value={{
+                            theme,
+                            colorScheme,
+                            setColorScheme: (
+                                newColorScheme: ColorScheme,
+                            ): void => {
+                                try {
+                                    localStorage.setItem(
+                                        COLOR_SCHEME_KEY,
+                                        newColorScheme,
+                                    );
+                                } catch {}
+                                setColorScheme(newColorScheme);
+                            },
+                        }}
+                    >
+                        {children}
+                    </WebsiteTheme.Provider>
+                </ThemeProvider>
+            </StyledEngineProvider>
+        </EmotionCacheProvider>
     );
 };
 

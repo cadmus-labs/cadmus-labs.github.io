@@ -1,3 +1,4 @@
+"use client";
 /*
  * Cadmus Labs - All Rights Reserved
  *
@@ -12,7 +13,6 @@
  *
  * © 2023 Cadmus Labs. All rights reserved.
  */
-
 import { Box, useTheme } from "@mui/material";
 import Image from "next/image";
 
@@ -25,11 +25,12 @@ interface LogoProps {
 
 const Logo = ({ logo, height }: LogoProps): React.ReactElement => {
     const theme = useTheme();
+    const src = logo.src[theme.palette.mode];
     return (
         <Box sx={{ position: "relative", height: height ?? "3em", my: 1 }}>
             <Image
                 alt={logo.alt}
-                src={logo.src(theme.palette.mode)}
+                src={src}
                 fill
                 sizes="100vw"
                 style={{

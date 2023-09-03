@@ -12,7 +12,6 @@
  *
  * © 2023 Cadmus Labs. All rights reserved.
  */
-
 import { Box } from "@mui/material";
 import Image from "next/image";
 import React from "react";

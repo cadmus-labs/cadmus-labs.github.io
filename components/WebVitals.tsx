@@ -1,3 +1,4 @@
+"use client";
 /*
  * Cadmus Labs - All Rights Reserved
  *
@@ -12,15 +13,20 @@
  *
  * © 2023 Cadmus Labs. All rights reserved.
  */
-import Head from "next/head";
+import { useReportWebVitals } from "next/web-vitals";
 import React from "react";
 
-const PUBLIC_URL = process.env.PUBLIC_URL ?? "https://cadmus-labs.github.io";
+const WebVitals = (): React.ReactElement => {
+    useReportWebVitals((metric) => {
+        (window as any).gtag("event", metric.name, {
+            value: Math.round(
+                metric.name === "CLS" ? metric.value * 1000 : metric.value,
+            ),
+            event_label: metric.id,
+            non_interaction: true,
+        });
+    });
+    return <React.Fragment />;
+};
 
-const NotFoundPage = (): React.ReactElement => (
-    <Head>
-        <meta httpEquiv="refresh" content={`0; url=${PUBLIC_URL}`} />
-    </Head>
-);
-
-export default NotFoundPage;
+export default WebVitals;

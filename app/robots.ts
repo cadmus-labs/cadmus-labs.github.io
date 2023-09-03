@@ -12,20 +12,18 @@
  *
  * © 2023 Cadmus Labs. All rights reserved.
  */
+import { type MetadataRoute } from "next";
 
-export interface ImageAsset {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-    blurDataURL?: string;
+const PUBLIC_URL = process.env.PUBLIC_URL ?? "https://cadmus-labs.github.io";
+
+export default function robots(): MetadataRoute.Robots {
+    return {
+        rules: {
+            userAgent: "*",
+            allow: "/",
+        },
+        sitemap: `${
+            PUBLIC_URL.endsWith("/") ? PUBLIC_URL : `${PUBLIC_URL}/`
+        }sitemap.xml`,
+    };
 }
-
-export const Photos: Record<string, ImageAsset> = {
-    AnalyzePhoto: {
-        src: "/assets/analyze-photo.svg",
-        alt: "Analyze Photo",
-        width: 5000,
-        height: 5000,
-    },
-};

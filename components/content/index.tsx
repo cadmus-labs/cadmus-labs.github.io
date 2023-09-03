@@ -12,12 +12,10 @@
  *
  * © 2023 Cadmus Labs. All rights reserved.
  */
-import { render, screen } from "@testing-library/react";
-
+import Logo from "./Logo";
 import Paragraph from "./Paragraph";
+import Photo from "./Photo";
+import Section from "./Section";
+import SectionHeading from "./SectionHeading";
 
-test("renders paragraph with correct children", async () => {
-    render(<Paragraph>Test Paragraph written for Cadmus Labs</Paragraph>);
-
-    await screen.findByText("Test Paragraph written for Cadmus Labs");
-});
+export { Logo, Paragraph, Photo, Section, SectionHeading };

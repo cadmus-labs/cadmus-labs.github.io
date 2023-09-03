@@ -17,10 +17,10 @@ jobs:
         runs-on: ubuntu-20.04
         steps:
             - name: Checkout
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
             - name: Link Checker
               id: lychee
-              uses: lycheeverse/lychee-action@v1.5.4
+              uses: lycheeverse/lychee-action@v1.8.0
               with:
                   args: --verbose --no-progress https://cadmus-labs.github.io/
                   fail: true
@@ -36,14 +36,14 @@ jobs:
     #     runs-on: ubuntu-20.04
     #     steps:
     #         - name: Checkout
-    #           uses: actions/checkout@v3
+    #           uses: actions/checkout@v4
     #         - name: Setup Node.js
     #           uses: actions/setup-node@v3
     #           with:
-    #               node-version: "18.12.1"
+    #               node-version: "18.17.1"
     #         - name: Run Lighthouse Audit
     #           run: |
-    #               npm install -g @lhci/cli@0.10.x
+    #               npm install -g @lhci/cli@0.12.x
     #               lhci autorun
     #           env:
     #               LHCI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -62,7 +62,7 @@ jobs:
             security-events: write
         steps:
             - name: Checkout
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
             - name: Run Trivy vulnerability scanner
               uses: aquasecurity/trivy-action@master
               with:

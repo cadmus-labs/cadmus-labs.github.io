@@ -12,12 +12,19 @@
  *
  * © 2023 Cadmus Labs. All rights reserved.
  */
-import { render, screen } from "@testing-library/react";
+import { Box, CircularProgress } from "@mui/material";
 
-import Paragraph from "./Paragraph";
+const Loading = (): React.ReactElement => (
+    <Box
+        sx={{
+            display: "flex",
+            justifyContent: "center",
+            pt: "25%",
+            height: "100vh",
+        }}
+    >
+        <CircularProgress />
+    </Box>
+);
 
-test("renders paragraph with correct children", async () => {
-    render(<Paragraph>Test Paragraph written for Cadmus Labs</Paragraph>);
-
-    await screen.findByText("Test Paragraph written for Cadmus Labs");
-});
+export default Loading;

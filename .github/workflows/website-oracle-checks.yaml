@@ -11,7 +11,7 @@ jobs:
         name: Check Certificate
         steps:
             - name: Checkout Repository
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
             - name: Check Website Certificate
               uses: cadmus-labs/check-website-certificate-action@main
               with:
@@ -23,7 +23,7 @@ jobs:
         name: Check Dependencies
         steps:
             - name: Checkout Repository
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
             - name: Check Dependencies
               uses: cadmus-labs/check-website-dependencies-action@main
               with:

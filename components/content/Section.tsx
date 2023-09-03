@@ -1,3 +1,4 @@
+"use client";
 /*
  * Cadmus Labs - All Rights Reserved
  *
@@ -12,7 +13,6 @@
  *
  * © 2023 Cadmus Labs. All rights reserved.
  */
-
 import { Box, styled } from "@mui/material";
 
 const Section = styled(Box)(() => ({

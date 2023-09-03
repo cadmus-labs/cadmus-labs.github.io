@@ -12,11 +12,8 @@
  *
  * © 2023 Cadmus Labs. All rights reserved.
  */
-
-export type ResolveSrcFunc = (theme: "light" | "dark") => string;
-
 export interface LogoAsset {
-    src: ResolveSrcFunc;
+    src: Record<"light" | "dark", string>;
     alt: string;
     width: number;
     height: number;
@@ -24,21 +21,12 @@ export interface LogoAsset {
 
 const WEBSITE_ORACLE_LOGO_SRC = "/assets/website-oracle-logo.jpg";
 
-const generateResolveSrcFunc = (image: {
-    src: string;
-    srcWhite: string;
-}): ResolveSrcFunc => {
-    return (theme: "light" | "dark") => {
-        return theme === "light" ? image.src : image.srcWhite;
-    };
-};
-
 export const Logos: Record<string, LogoAsset> = {
     websiteOracle: {
-        src: generateResolveSrcFunc({
-            src: WEBSITE_ORACLE_LOGO_SRC,
-            srcWhite: WEBSITE_ORACLE_LOGO_SRC,
-        }),
+        src: {
+            light: WEBSITE_ORACLE_LOGO_SRC,
+            dark: WEBSITE_ORACLE_LOGO_SRC,
+        },
         alt: "Website Oracle",
         width: 5000,
         height: 5000,

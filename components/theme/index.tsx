@@ -12,21 +12,6 @@
  *
  * © 2023 Cadmus Labs. All rights reserved.
  */
+import WebsiteThemeProvider, { useWebsiteTheme } from "./WebsiteThemeProvider";
 
-export interface Route {
-    name: string;
-    subRoutes?: Record<string, Route>;
-}
-
-export const ANY_ROUTE = "*";
-
-export const Routes: Record<string, Route> = {
-    "/solutions": {
-        name: "Solutions",
-        subRoutes: {
-            "/website-oracle": {
-                name: "Website Oracle",
-            },
-        },
-    },
-};
+export { WebsiteThemeProvider, useWebsiteTheme };

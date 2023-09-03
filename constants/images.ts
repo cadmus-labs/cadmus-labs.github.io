@@ -12,12 +12,19 @@
  *
  * © 2023 Cadmus Labs. All rights reserved.
  */
-import { render, screen } from "@testing-library/react";
+export interface ImageAsset {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    blurDataURL?: string;
+}
 
-import Paragraph from "./Paragraph";
-
-test("renders paragraph with correct children", async () => {
-    render(<Paragraph>Test Paragraph written for Cadmus Labs</Paragraph>);
-
-    await screen.findByText("Test Paragraph written for Cadmus Labs");
-});
+export const Photos: Record<string, ImageAsset> = {
+    AnalyzePhoto: {
+        src: "/assets/analyze-photo.svg",
+        alt: "Analyze Photo",
+        width: 5000,
+        height: 5000,
+    },
+};

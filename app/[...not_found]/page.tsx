@@ -12,12 +12,9 @@
  *
  * © 2023 Cadmus Labs. All rights reserved.
  */
-import { render, screen } from "@testing-library/react";
+import { redirect } from "next/navigation";
+import type React from "react";
 
-import Paragraph from "./Paragraph";
+const NotFound = (): React.ReactElement => redirect("/");
 
-test("renders paragraph with correct children", async () => {
-    render(<Paragraph>Test Paragraph written for Cadmus Labs</Paragraph>);
-
-    await screen.findByText("Test Paragraph written for Cadmus Labs");
-});
+export default NotFound;

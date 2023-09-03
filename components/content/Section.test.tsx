@@ -12,7 +12,6 @@
  *
  * © 2023 Cadmus Labs. All rights reserved.
  */
-
 import { render, screen } from "@testing-library/react";
 
 import Section from "./Section";
