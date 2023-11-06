@@ -13,7 +13,7 @@
  * © 2023 Cadmus Labs. All rights reserved.
  */
 import { AppBar, Container, Toolbar, Typography } from "@mui/material";
-import { type Metadata } from "next";
+import type { Viewport, Metadata } from "next";
 import { Roboto } from "next/font/google";
 import Link from "next/link";
 import Script from "next/script";
@@ -43,25 +43,6 @@ export const metadata: Metadata = {
     generator: "Next.js",
     keywords: ["Cadmus Labs", "APIs", "Software Solutions"],
     referrer: "origin",
-    themeColor: [
-        {
-            media: "(prefers-color-scheme: light)",
-            color: "#6c63ff",
-        },
-        {
-            media: "(prefers-color-scheme: dark)",
-            color: "#000000",
-        },
-    ],
-    colorScheme: "light",
-    viewport: {
-        minimumScale: 1,
-        initialScale: 1,
-        width: "device-width",
-        userScalable: true,
-        viewportFit: "cover",
-        interactiveWidget: "resizes-visual",
-    },
     robots: `${PUBLIC_URL}/robots.txt`,
     alternates: {
         canonical: PUBLIC_URL,
@@ -110,6 +91,26 @@ export const metadata: Metadata = {
     },
 };
 
+export const viewport: Viewport = {
+    themeColor: [
+        {
+            media: "(prefers-color-scheme: light)",
+            color: "#6c63ff",
+        },
+        {
+            media: "(prefers-color-scheme: dark)",
+            color: "#000000",
+        },
+    ],
+    colorScheme: "light",
+    minimumScale: 1,
+    initialScale: 1,
+    width: "device-width",
+    userScalable: true,
+    viewportFit: "cover",
+    interactiveWidget: "resizes-visual",
+};
+
 const createCspValues = (): string[] => {
     const cspValues = {
         "default-src": ["'none'"],
@@ -117,6 +118,7 @@ const createCspValues = (): string[] => {
         "img-src": [
             "'self'",
             "data:",
+            "https://cadmus-labs.imgix.net",
             "https://www.google.lk",
             "https://www.googletagmanager.com",
         ],
@@ -173,6 +175,8 @@ const RootLayout = ({ children }: RootLayoutProps): React.ReactElement => {
                     httpEquiv="Content-Security-Policy"
                     content={csps.join("; ")}
                 />
+
+                <link rel="preconnect" href="https://cadmus-labs.imgix.net" />
 
                 <Script
                     id="json-for-linking-data"

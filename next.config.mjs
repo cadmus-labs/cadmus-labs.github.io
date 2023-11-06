@@ -32,9 +32,20 @@ export default withBundleAnalyzer(
         eslint: {
             ignoreDuringBuilds: process.env["BUILD_TYPE"] == "test",
         },
+        modularizeImports: {
+            "@mui/icons-material": {
+                transform: "@mui/icons-material/{{member}}",
+            },
+        },
         images: {
-            unoptimized: true,
+            loader: "custom",
+            loaderFile: "./nextImageLoader.js",
+        },
+        experimental: {
+            webpackBuildWorker: true,
         },
         productionBrowserSourceMaps: true,
+        reactStrictMode: true,
+        swcMinify: true,
     }),
 );
